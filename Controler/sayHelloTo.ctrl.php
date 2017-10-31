@@ -7,8 +7,8 @@
 ///////////////////////////////////
 
 //We check if the have a name in the POST_ array (from the html form)
-if (isset($POST_['name'])) {
-    $name = $POST_['name'];
+if (isset($_POST['name'])) {
+    $name = $_POST['name'];
 } else {
     //If not, we create a variable error
     $error = "Erreur: Le nom a été perdue dans la requête.";
@@ -29,10 +29,10 @@ if (!isset($error)) {
 
 //Depending on the data valeur, we include the corresponding view
 if (isset($error)) {
-    include("View/error.view.php");
+    echo($error);
 } else {
     //We create an assosiative array to gather data in a unique place
     $data['name'] = $name;
-    include("View/mainExample.view.php");
+   include ("../View/mainExample.view.php");
 }
 ?>
