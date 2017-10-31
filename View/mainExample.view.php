@@ -8,7 +8,7 @@ include("header.view.php");
         } else {
             echo 'world';
         } ?>!</h1>
-    <form method="POST" action="../Controler/sayHelloTo.ctrl.php">
+    <form method="POST" action="Controler/sayHelloTo.ctrl.php">
         <label class="label">Name:</label>
         <input type="text" name="name" required>
         <input type="submit">
