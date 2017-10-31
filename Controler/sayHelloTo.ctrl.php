@@ -29,10 +29,10 @@ if (!isset($error)) {
 
 //Depending on the data valeur, we include the corresponding view
 if (isset($error)) {
-    include("View/error.view.php");
+    include("../View/error.view.php");
 } else {
     //We create an assosiative array to gather data in a unique place
     $data['name'] = $name;
-    include("View/mainExample.view.php");
+    include("../View/mainExample.view.php");
 }
 ?>
