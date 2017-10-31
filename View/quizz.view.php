@@ -1,7 +1,7 @@
 <?php
-include_once("View/header.view.php");
+include_once("header.view.php");
 
-$json = file_get_contents("Plugin/quizz.json");
+$json = file_get_contents("../Ressources/quizz.json");
 
 $quizz = (json_decode($json, true));
 //print_r($quizz);
@@ -55,5 +55,5 @@ function shuffle_assoc(&$array)
     return true;
 }
 
-include_once("View/footer.view.php");
+include_once("footer.view.php");
 ?>
