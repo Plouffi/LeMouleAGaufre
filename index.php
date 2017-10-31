@@ -1,4 +1,3 @@
-<!--
 <?php
-    include("View/mainExample.php");
+    include("View/mainExample.view.php");
 ?>
