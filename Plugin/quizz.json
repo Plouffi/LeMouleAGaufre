@@ -1,0 +1,324 @@
+{
+  "quiz": {
+    "domaine 1": {
+      "question 1": {
+        "question": "Quel est l'ordre de grandeur de l'empreinte carbone des TIC en France ?",
+        "options": [
+          "",
+          "",
+          "",
+          ""
+        ],
+        "answer": ""
+      },
+      "question 2": {
+        "question": "Au début du 21° siècle (jusqu'à horizon 2020), quelle est la part d'émissions CO2 due aux TIC dans le monde ?",
+        "options": [
+          "",
+          "",
+          "",
+          ""
+        ],
+        "answer": ""
+      },
+      "question 3": {
+        "question": "En france, quelle est la consommation moyenne d'un ordinateur ?",
+        "options": [
+          "",
+          "",
+          "",
+          ""
+        ],
+        "answer": ""
+      },
+      "question 4": {
+        "question": "Quelle est l'ordre de grandeur de la consommation annuelle des serveurs dans le monde ?",
+        "options": [
+          "",
+          "",
+          "",
+          ""
+        ],
+        "answer": ""
+      },
+      "question 5": {
+        "question": "Qu'est-ce que l'accessibilité numérique ?",
+        "options": [
+          "",
+          "",
+          "",
+          ""
+        ],
+        "answer": ""
+      },
+      "question 6": {
+        "question": "Parmis les substances suivantes, lesquelles sont concernées par la Directive européenne RoHS ?",
+        "options": [
+          "",
+          "",
+          "",
+          ""
+        ],
+        "answer": ""
+      }
+    },
+    "domaine 2": {
+      "question 1": {
+        "question": "",
+        "options": [
+          "",
+          "",
+          "",
+          ""
+        ],
+        "answer": ""
+      },
+      "question 2": {
+        "question": "",
+        "options": [
+          "",
+          "",
+          "",
+          ""
+        ],
+        "answer": ""
+      },
+      "question 3": {
+        "question": "",
+        "options": [
+          "",
+          "",
+          "",
+          ""
+        ],
+        "answer": ""
+      },
+      "question 4": {
+        "question": "",
+        "options": [
+          "",
+          "",
+          "",
+          ""
+        ],
+        "answer": ""
+      },
+      "question 5": {
+        "question": "",
+        "options": [
+          "",
+          "",
+          "",
+          ""
+        ],
+        "answer": ""
+      },
+      "question 6": {
+        "question": "",
+        "options": [
+          "",
+          "",
+          "",
+          ""
+        ],
+        "answer": ""
+      },
+      "question 7": {
+        "question": "",
+        "options": [
+          "",
+          "",
+          "",
+          ""
+        ],
+        "answer": ""
+      },
+      "question 8": {
+        "question": "",
+        "options": [
+          "",
+          "",
+          "",
+          ""
+        ],
+        "answer": ""
+      }
+    },
+    "domaine 3": {
+      "question 1": {
+        "question": "",
+        "options": [
+          "",
+          "",
+          "",
+          ""
+        ],
+        "answer": ""
+      },
+      "question 2": {
+        "question": "",
+        "options": [
+          "",
+          "",
+          "",
+          ""
+        ],
+        "answer": ""
+      },
+      "question 3": {
+        "question": "",
+        "options": [
+          "",
+          "",
+          "",
+          ""
+        ],
+        "answer": ""
+      },
+      "question 4": {
+        "question": "",
+        "options": [
+          "",
+          "",
+          "",
+          ""
+        ],
+        "answer": ""
+      },
+      "question 5": {
+        "question": "",
+        "options": [
+          "",
+          "",
+          "",
+          ""
+        ],
+        "answer": ""
+      },
+      "question 6": {
+        "question": "",
+        "options": [
+          "",
+          "",
+          "",
+          ""
+        ],
+        "answer": ""
+      }
+    },
+    "domaine 4": {
+      "question 1": {
+        "question": "",
+        "options": [
+          "",
+          "",
+          "",
+          ""
+        ],
+        "answer": ""
+      },
+      "question 2": {
+        "question": "",
+        "options": [
+          "",
+          "",
+          "",
+          ""
+        ],
+        "answer": ""
+      },
+      "question 3": {
+        "question": "",
+        "options": [
+          "",
+          "",
+          "",
+          ""
+        ],
+        "answer": ""
+      },
+      "question 4": {
+        "question": "",
+        "options": [
+          "",
+          "",
+          "",
+          ""
+        ],
+        "answer": ""
+      },
+      "question 5": {
+        "question": "",
+        "options": [
+          "",
+          "",
+          "",
+          ""
+        ],
+        "answer": ""
+      }
+    },
+    "domaine 5": {
+      "question 1": {
+        "question": "",
+        "options": [
+          "",
+          "",
+          "",
+          ""
+        ],
+        "answer": ""
+      },
+      "question 2": {
+        "question": "",
+        "options": [
+          "",
+          "",
+          "",
+          ""
+        ],
+        "answer": ""
+      },
+      "question 3": {
+        "question": "",
+        "options": [
+          "",
+          "",
+          "",
+          ""
+        ],
+        "answer": ""
+      },
+      "question 4": {
+        "question": "",
+        "options": [
+          "",
+          "",
+          "",
+          ""
+        ],
+        "answer": ""
+      },
+      "question 5": {
+        "question": "",
+        "options": [
+          "",
+          "",
+          "",
+          ""
+        ],
+        "answer": ""
+      },
+      "question 6": {
+        "question": "",
+        "options": [
+          "",
+          "",
+          "",
+          ""
+        ],
+        "answer": ""
+      }
+    }
+  }
+}
