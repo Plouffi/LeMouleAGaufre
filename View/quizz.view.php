@@ -6,6 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
     <!--If you need to include some files (css, js), do it below-->
     <link rel="stylesheet" type="text/css" href="../Ressources/styleQuizz.css">
@@ -16,16 +18,25 @@
 <header><!--This is header will be the navigation menu bar-->
     <nav class="navbar navbar-inverse navbar-fixed-top">
         <div class="container-fluid">
-            <ul class="nav navbar-nav">
-                <li><a href="#domain1">Domaine 1</a></li>
-                <li><a href="#domain2">Domaine 2</a></li>
-                <li><a href="#domain3">Domaine 3</a></li>
-                <li><a href="#domain4">Domaine 4</a></li>
-                <li><a href="#domain5">Domaine 5</a></li>
-            </ul>
-            <ul class="nav navbar-nav navbar-right">
-                <li><a><span class="glyphicon glyphicon-user"></span> Nom Prénom</a></li>
-            </ul>
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+            <div class="collapse navbar-collapse" id="myNavbar">
+                <ul class="nav navbar-nav">
+                    <li><a href="#domain1">Domaine 1</a></li>
+                    <li><a href="#domain2">Domaine 2</a></li>
+                    <li><a href="#domain3">Domaine 3</a></li>
+                    <li><a href="#domain4">Domaine 4</a></li>
+                    <li><a href="#domain5">Domaine 5</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a><span class="glyphicon glyphicon-user"></span> Nom Prénom</a></li>
+                </ul>
+            </div>
         </div>
     </nav>
 </header>
