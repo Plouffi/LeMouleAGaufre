@@ -1,44 +1,79 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <title>Quizz</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+    <!--If you need to include some files (css, js), do it below-->
+    <link rel="stylesheet" type="text/css" href="../Ressources/styleQuizz.css">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+
+</head>
+<body class="container">
+<header><!--This is header will be the navigation menu bar-->
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container-fluid">
+            <ul class="nav navbar-nav">
+                <li><a href="#domain1">Domaine 1</a></li>
+                <li><a href="#domain2">Domaine 2</a></li>
+                <li><a href="#domain3">Domaine 3</a></li>
+                <li><a href="#domain4">Domaine 4</a></li>
+                <li><a href="#domain5">Domaine 5</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a><span class="glyphicon glyphicon-user"></span> Nom Prénom</a></li>
+            </ul>
+        </div>
+    </nav>
+</header>
+<!-- Body and html balise are closed in footer.view.php file-->
+
+
 <?php
-include_once("header.view.php");
+
 
 $json = file_get_contents("../Ressources/quizz.json");
 
 $quizz = (json_decode($json, true));
-//print_r($quizz);
-//print_r($quizz['quizz']['domaine'][0]['questions'][0]);
-$quizz = $quizz['quizz']['domaine'];
-$domaine = 0;
-$question = 0;
-$rep = 0;
-echo('<form>');
+$quizz = $quizz['quizz']['questions'];
+asort($quizz);
+
+$tmp = array("domains" => array(array(), array(), array(), array(), array()));
+
 foreach ($quizz as $key => $value) {
+    array_push($tmp["domains"][$value['domain'] - 1], $value);
+}
+$quizz = $tmp;
+
+
+echo('<form><div class="container form-group">');
+
+foreach ($quizz['domains'] as $key => $value) {
+    echo('<h1 id="domain' . $value[0]['domain'] . '">Domaine ' . $value[0]['domain'] . '</h1>');
     echo('<div>');
-    shuffle_assoc($value['questions']);
-    echo('<h1>' . $value['name'] . '</h1>');
-    //print_r($value);
-    foreach ($value['questions'] as $k => $v) {
-        echo('<fieldset><legend>Question ' . ($question + 1) . ': </legend>' . $v['question']);
+    shuffle($value);
+    foreach ($value as $k => $v) {
+        echo('<div  class="panel panel-default"><div class="panel-heading">' . $v['question'] . '</div>');
         shuffle_assoc($v['options']);
-
         foreach ($v['options'] as $q => $r) {
-            $id = $domaine . '.' . $question . '.' . $rep;
+            $id = $v['id'] . '.' . $q;
             if (in_array($q, $v['answer'])) {
-                echo('<div><input type="checkbox" checked id="' . $id . '"><label for="' . $id . '">' . $r . '</label></div>');
+                echo('<div class="checkbox"><label for="' . $id . '"><input type="checkbox" id="' . $id . '" checked><span class="cr"><i class="cr-icon fa fa-check"></i></span>
+            ' . $r . '</label></div>');
             } else {
-                echo('<div><input type="checkbox" id="' . $id . '"><label for="' . $id . '">' . $r . '</label></div>');
+                echo('<div class="checkbox"><label for="' . $id . '"><input type="checkbox" id="' . $id . '"><span class="cr"><i class="cr-icon fa fa-check"></i></span>
+            ' . $r . '</label></div>');
             }
-            $rep++;
         }
-        echo('</fieldset>');
-
-        $rep = 0;
-        $question++;
+        echo('</div>');
     }
-    $question = 0;
-    $domaine++;
     echo('</div>');
 }
-echo('</form>');
+echo('<button type="submit" class="btn btn-success btn-lg btn-block">Valider le questionnaire</button>');
+echo('</div></form>');
 
 function shuffle_assoc(&$array)
 {
@@ -55,5 +90,9 @@ function shuffle_assoc(&$array)
     return true;
 }
 
-include_once("footer.view.php");
+?>
+
+
+<?php
+include_once("../View/footer.view.php");
 ?>
