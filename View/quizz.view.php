@@ -1,19 +1,34 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <title>Quizz</title>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<?php
+/* Récupération et réorganisation des questions */
+$json = file_get_contents("../Ressources/quizz.json");
+$quizz = (json_decode($json, true));
+$quizz = $quizz['quizz']['questions'];
+asort($quizz);
 
-    <!--If you need to include some files (css, js), do it below-->
-    <link rel="stylesheet" type="text/css" href="../Ressources/styleQuizz.css">
-    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+//On réorganise les questions par domaine
+$tmp = array("domains" => array(array(), array(), array(), array(), array()));
 
-</head>
+foreach ($quizz as $key => $value) {
+    array_push($tmp["domains"][$value['domain'] - 1], $value);
+}
+$quizz = $tmp;
+?>
+    <!DOCTYPE html>
+    <html lang="fr">
+    <head>
+        <title>Quizz</title>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+        <!--If you need to include some files (css, js), do it below-->
+        <link rel="stylesheet" type="text/css" href="../Ressources/styleQuizz.css">
+        <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+
+    </head>
 <body class="container">
 <header><!--This is header will be the navigation menu bar-->
     <nav class="navbar navbar-inverse navbar-fixed-top">
@@ -25,13 +40,21 @@
                     <span class="icon-bar"></span>
                 </button>
             </div>
-            <div class="collapse navbar-collapse" id="myNavbar">
+            <div class="nav-tabs collapse navbar-collapse" id="myNavbar">
                 <ul class="nav navbar-nav">
-                    <li><a href="#domain1">Domaine 1</a></li>
-                    <li><a href="#domain2">Domaine 2</a></li>
-                    <li><a href="#domain3">Domaine 3</a></li>
-                    <li><a href="#domain4">Domaine 4</a></li>
-                    <li><a href="#domain5">Domaine 5</a></li>
+                    <!-- Les labels indiquent le nombre de questions répondus par domaine-->
+                    <?php
+
+                    foreach ($quizz['domains'] as $key => $value) {
+                        $domain = $value[0]['domain']; // Récupère le numéro du domaine
+                        $nbQ = sizeof($value); // Récupère le nombre de questions
+                        if ($domain == 1) {
+                            echo('<li class="active"><a href="#domain' . $domain . '">Domaine ' . $domain . '<span class="label label-success"><b>0</b>/' . $nbQ . '</span></a></li>');
+                        } else {
+                            echo('<li><a href="#domain' . $domain . '">Domaine ' . $domain . '<span class="label label-success"><b>0</b>/' . $nbQ . '</span></a></li>');
+                        }
+                    }
+                    ?>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <li><a><span class="glyphicon glyphicon-user"></span> Nom Prénom</a></li>
@@ -46,26 +69,18 @@
 <?php
 
 
-$json = file_get_contents("../Ressources/quizz.json");
-
-$quizz = (json_decode($json, true));
-$quizz = $quizz['quizz']['questions'];
-asort($quizz);
-
-
-$tmp = array("domains" => array(array(), array(), array(), array(), array()));
-
-foreach ($quizz as $key => $value) {
-    array_push($tmp["domains"][$value['domain'] - 1], $value);
-}
-$quizz = $tmp;
-//print_r(json_encode($quizz));
-
-echo('<form><div class="container form-group">');
+/* Traitement des questions */
+echo('<form><div class="tab-content form-group">');
 
 foreach ($quizz['domains'] as $key => $value) {
-    echo('<h1 id="domain' . $value[0]['domain'] . '">Domaine ' . $value[0]['domain'] . '</h1>');
-    echo('<div>');
+    $domain = $value[0]['domain'];
+    if ($domain == 1) {
+        echo('<div class="tab-pane fade in active" id="domain' . $domain . '">');
+    } else {
+        echo('<div class="tab-pane fade in" id="domain' . $domain . '">');
+    }
+    echo('<h1>Domaine ' . $domain . '</h1>');
+    //echo('<div class="progress"><div class="progress-bar progress-bar-success progress-bar-striped active" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width:70%">70%</div></div>');
     shuffle($value);
     foreach ($value as $k => $v) {
         echo('<div  class="panel panel-default"><div class="panel-heading">' . $v['question'] . '</div>');
@@ -86,7 +101,7 @@ foreach ($quizz['domains'] as $key => $value) {
 }
 
 
-echo('<button type="submit" class="btn btn-success btn-lg btn-block">Valider le questionnaire</button>');
+echo(' <button type="submit" id="submit" class="btn btn-success disabled btn-lg btn-block">Valider le questionnaire</button>');
 echo('</div></form>');
 
 function shuffle_assoc(&$array)
@@ -104,6 +119,44 @@ function shuffle_assoc(&$array)
     return true;
 }
 
+?>
+<!-- Message d'alerte si l'utilisateur essaye de valider alors qu'il n'a pas répondu à toutes les questions -->
+<div class="modal fade" id="warning" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Attention</h4>
+            </div>
+            <div class="modal-body">
+                <p>Merci de répondre à toutes les questions pour valider le questionaire.</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+<script>
+    $(document).ready(function () {
+        $("#submit").click(function () {
+            if ($(this).hasClass('disabled')) {
+                $('html, body').animate({scrollTop: 0});
+                $("#warning").modal();
+            }
+        });
+    });
+    $(document).ready(function () {
+        $(".nav-tabs a").click(function () {
+            $(this).tab('show');
+            $('html, body').animate({scrollTop: 0});
+        });
+    });
+</script>
+<?php
 
 include_once("../View/footer.view.php");
 ?>
