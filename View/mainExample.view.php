@@ -1,6 +1,5 @@
 <!--Example-->
 <?php
-<<<<<<< Updated upstream
 include("header.view.php");
 ?>
 <div id="main">
@@ -19,19 +18,4 @@ include("header.view.php");
 
 <?php
 include("footer.view.php");
-=======
-    require 'header.view.php';
-?>
-        <div id="main">
-            <form method="POST" action="../Controler/sayHelloTo.ctrl.php">
-                <label class="label">Name:</label>
-                <input type="text" name="name" required>
-                <input type="submit">
-            </form>
-        </div>
-
-
-<?php
-    require 'footer.view.php';
->>>>>>> Stashed changes
 ?>

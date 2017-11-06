@@ -52,13 +52,14 @@ $quizz = (json_decode($json, true));
 $quizz = $quizz['quizz']['questions'];
 asort($quizz);
 
+
 $tmp = array("domains" => array(array(), array(), array(), array(), array()));
 
 foreach ($quizz as $key => $value) {
     array_push($tmp["domains"][$value['domain'] - 1], $value);
 }
 $quizz = $tmp;
-
+//print_r(json_encode($quizz));
 
 echo('<form><div class="container form-group">');
 
@@ -83,6 +84,8 @@ foreach ($quizz['domains'] as $key => $value) {
     }
     echo('</div>');
 }
+
+
 echo('<button type="submit" class="btn btn-success btn-lg btn-block">Valider le questionnaire</button>');
 echo('</div></form>');
 
@@ -101,9 +104,6 @@ function shuffle_assoc(&$array)
     return true;
 }
 
-?>
 
-
-<?php
 include_once("../View/footer.view.php");
 ?>
