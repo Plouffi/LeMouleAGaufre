@@ -87,13 +87,14 @@ foreach ($quizz['domains'] as $key => $value) {
         shuffle_assoc($v['options']);
         foreach ($v['options'] as $q => $r) {
             $id = $v['id'] . '.' . $q;
-            if (in_array($q, $v['answer'])) {
+            echo('<div class="checkbox"><label for="' . $id . '"><input type="checkbox" id="' . $id . '"><span class="cr"><i class="cr-icon fa fa-check"></i></span>' . $r . '</label></div>');
+            /*if (in_array($q, $v['answer'])) {
                 echo('<div class="checkbox"><label for="' . $id . '"><input type="checkbox" id="' . $id . '" checked><span class="cr"><i class="cr-icon fa fa-check"></i></span>
             ' . $r . '</label></div>');
             } else {
                 echo('<div class="checkbox"><label for="' . $id . '"><input type="checkbox" id="' . $id . '"><span class="cr"><i class="cr-icon fa fa-check"></i></span>
             ' . $r . '</label></div>');
-            }
+            }*/
         }
         echo('</div>');
     }
@@ -141,15 +142,45 @@ function shuffle_assoc(&$array)
     </div>
 </div>
 <script>
+
     $(document).ready(function () {
+        var tabRep = [0, 0, 0, 0, 0];
         $("#submit").click(function () {
             if ($(this).hasClass('disabled')) {
                 $('html, body').animate({scrollTop: 0});
                 $("#warning").modal();
             }
         });
-    });
-    $(document).ready(function () {
+        $(":checkbox").click(function () {
+            countAnswer($(this).parent().parent().parent().parent().attr('id'));
+        });
+
+        function countAnswer(domain) {
+            nb = domain.charAt(6);
+            tabRep[nb] = 0;
+            $.each($('#' + domain).find('.panel'), function () {
+                if ($(this).find(':checkbox:checked').length > 0) {
+                    tabRep[nb] += 1;
+                }
+            });
+            $('.navbar-nav li:nth-child(' + nb + ') b').text(tabRep[nb]);
+        }
+
+        //Fonction qui vérifie si l'on a répondu à toutes les questions
+        $(":checkbox").click(function (e) {
+            var nbQuest = 0;
+            for (var i = 1; i < 6; i++) {
+                nbQuest += parseInt($('.navbar-nav li:nth-child(' + i + ') b').text());
+            }
+            if (nbQuest == 32) {
+                $('#submit').removeClass('disabled');
+            }
+            else if (nbQuest != 32 && !($('#submit').hasClass('disabled'))) {
+                $('#submit').addClass('disabled');
+            }
+
+        });
+        //Fonction qui permet afficher seulement le domaine cliqué
         $(".nav-tabs a").click(function () {
             $(this).tab('show');
             $('html, body').animate({scrollTop: 0});
