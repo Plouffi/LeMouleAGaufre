@@ -1,4 +1,5 @@
 <?php
+
 /* Récupération et réorganisation des questions */
 $json = file_get_contents("../Ressources/quizz.json");
 $quizz = (json_decode($json, true));
@@ -20,13 +21,14 @@ $quizz = $tmp;
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+        <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
         <!--If you need to include some files (css, js), do it below-->
         <link rel="stylesheet" type="text/css" href="../Ressources/styleQuizz.css">
-        <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
 
     </head>
 <body class="container">
@@ -70,7 +72,7 @@ $quizz = $tmp;
 
 
 /* Traitement des questions */
-echo('<form><div class="tab-content form-group">');
+echo('<form id="formQuizz"><div class="tab-content form-group">');
 
 foreach ($quizz['domains'] as $key => $value) {
     $domain = $value[0]['domain'];
@@ -102,8 +104,8 @@ foreach ($quizz['domains'] as $key => $value) {
 }
 
 
-echo(' <button type="submit" id="submit" class="btn btn-success disabled btn-lg btn-block">Valider le questionnaire</button>');
 echo('</div></form>');
+echo(' <button id="val" class="btn btn-success btn-lg btn-block" style="display: block">Valider le questionnaire</button>');
 
 function shuffle_assoc(&$array)
 {
@@ -132,10 +134,30 @@ function shuffle_assoc(&$array)
                 <h4 class="modal-title">Attention</h4>
             </div>
             <div class="modal-body">
-                <p>Merci de répondre à toutes les questions pour valider le questionaire.</p>
+                <p>Merci de répondre à toutes les questions avant de valider le questionnaire</p>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+<div class="modal fade" id="validQuest" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Validation</h4>
+            </div>
+            <div class="modal-body">
+                <p>Voulez-vous vraiment valider les réponses ?</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" id="valider">Valider</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Annuler</button>
             </div>
         </div>
 
@@ -145,12 +167,25 @@ function shuffle_assoc(&$array)
 
     $(document).ready(function () {
         var tabRep = [0, 0, 0, 0, 0];
-        $("#submit").click(function () {
-            if ($(this).hasClass('disabled')) {
-                $('html, body').animate({scrollTop: 0});
-                $("#warning").modal();
+
+        $('#val').click(function (e) {
+            var nbQuest = 0;
+            for (var i = 1; i < 6; i++) {
+                nbQuest += parseInt($('.navbar-nav li:nth-child(' + i + ') b').text());
             }
+            if (nbQuest == 32) {
+                $('#validQuest').modal('show');
+                $("#valider").click(function () {
+                    $("#formQuizz").submit();
+                });
+            }
+            else {
+                $('#warning').modal('show');
+            }
+
+
         });
+
         $(":checkbox").click(function () {
             countAnswer($(this).parent().parent().parent().parent().attr('id'));
         });
@@ -166,20 +201,6 @@ function shuffle_assoc(&$array)
             $('.navbar-nav li:nth-child(' + nb + ') b').text(tabRep[nb]);
         }
 
-        //Fonction qui vérifie si l'on a répondu à toutes les questions
-        $(":checkbox").click(function (e) {
-            var nbQuest = 0;
-            for (var i = 1; i < 6; i++) {
-                nbQuest += parseInt($('.navbar-nav li:nth-child(' + i + ') b').text());
-            }
-            if (nbQuest == 32) {
-                $('#submit').removeClass('disabled');
-            }
-            else if (nbQuest != 32 && !($('#submit').hasClass('disabled'))) {
-                $('#submit').addClass('disabled');
-            }
-
-        });
         //Fonction qui permet afficher seulement le domaine cliqué
         $(".nav-tabs a").click(function () {
             $(this).tab('show');
