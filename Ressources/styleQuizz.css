@@ -10,6 +10,7 @@ body.container {
 }
 
 .btn-success {
+    margin-bottom: 15px;
     color: #fff;
     background-color: #3e936a;
     border-color: #3e936a;
@@ -39,7 +40,6 @@ body.container {
 
 .panel-default > .panel-heading {
     color: white;
-    /*background-color: #8f8f8f;*/
     background-color: #3e936a;
 }
 
