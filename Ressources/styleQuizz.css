@@ -24,6 +24,15 @@ body.container {
 
 .btn-success:focus, .btn-success.focus {
     box-shadow: 0 0 0 3px rgba(62, 147, 106, 0.5);
+    background-color: #317453;
+    border-color: #317453;
+}
+
+.btn-success.active.focus, .btn-success.active:focus,
+.btn-success.active:hover, .btn-success:active.focus,
+.btn-success:active:focus, .btn-success:active:hover {
+    background-color: #317453;
+    border-color: #317453;
 }
 
 .btn-success.disabled, .btn-success:disabled {
@@ -38,9 +47,15 @@ body.container {
     border-color: #317453;
 }
 
-.panel-default > .panel-heading {
+.panel-primary {
+    border-color: #3e936a;
+    border-radius: 5px;
+}
+
+.panel-primary > .panel-heading {
     color: white;
     background-color: #3e936a;
+    border-color: #3e936a;
 }
 
 .checkbox label {
@@ -72,10 +87,6 @@ body.container {
     left: 20%;
 }
 
-.radio .cr .cr-icon {
-    margin-left: 0.04em;
-}
-
 .checkbox label input[type="checkbox"] {
     display: none;
 }
@@ -98,4 +109,8 @@ body.container {
 .label {
     margin-left: 5px;
     background-color: #3e936a;
+}
+.alert{
+    margin: 5px 10px;
+    padding: 0px;
 }
