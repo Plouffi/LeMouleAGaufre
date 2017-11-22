@@ -1,18 +1,6 @@
 <?php
-
-/* Récupération et réorganisation des questions */
-$json = file_get_contents("../Ressources/quizz.json");
-$quizz = (json_decode($json, true));
-$quizz = $quizz['quizz']['questions'];
-asort($quizz);
-
-//On réorganise les questions par domaine
-$tmp = array("domains" => array(array(), array(), array(), array(), array()));
-
-foreach ($quizz as $key => $value) {
-    array_push($tmp["domains"][$value['domain'] - 1], $value);
-}
-$quizz = $tmp;
+session_start();
+include('../Ressources/quizzScript.php');
 ?>
     <!DOCTYPE html>
     <html lang="fr">
@@ -21,14 +9,16 @@ $quizz = $tmp;
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!--Bootstrap-->
         <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
         <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
-
+        <!--Script JQuery/Bootstrap-->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
         <!--If you need to include some files (css, js), do it below-->
         <link rel="stylesheet" type="text/css" href="../Ressources/styleQuizz.css">
+        <script src="../Ressources/quizzScript.js"></script>
 
     </head>
 <body class="container">
@@ -46,8 +36,7 @@ $quizz = $tmp;
                 <ul class="nav navbar-nav">
                     <!-- Les labels indiquent le nombre de questions répondus par domaine-->
                     <?php
-
-                    foreach ($quizz['domains'] as $key => $value) {
+                    foreach ($_SESSION['quizz']['domains'] as $key => $value) {
                         $domain = $value[0]['domain']; // Récupère le numéro du domaine
                         $nbQ = sizeof($value); // Récupère le nombre de questions
                         if ($domain == 1) {
@@ -65,62 +54,41 @@ $quizz = $tmp;
         </div>
     </nav>
 </header>
-<!-- Body and html balise are closed in footer.view.php file-->
-
-
 <?php
 
-
 /* Traitement des questions */
-echo('<form id="formQuizz"><div class="tab-content form-group">');
-
-foreach ($quizz['domains'] as $key => $value) {
+echo('<form id="formQuizz" action="quizzA.view.php" target="_blank" method="POST"><div class="tab-content form-group">');
+//print_r(json_encode($_SESSION['quizz']));
+foreach ($_SESSION['quizz']['domains'] as $key => $value) {
     $domain = $value[0]['domain'];
-    if ($domain == 1) {
+    if ($domain == 1) { // Premier domaine actif par défaut
         echo('<div class="tab-pane fade in active" id="domain' . $domain . '">');
     } else {
         echo('<div class="tab-pane fade in" id="domain' . $domain . '">');
     }
     echo('<h1>Domaine ' . $domain . '</h1>');
-    //echo('<div class="progress"><div class="progress-bar progress-bar-success progress-bar-striped active" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width:70%">70%</div></div>');
-    shuffle($value);
     foreach ($value as $k => $v) {
-        echo('<div  class="panel panel-default"><div class="panel-heading">' . $v['question'] . '</div>');
-        shuffle_assoc($v['options']);
+        if (sizeof($v['answer']) > 1) {
+            echo('<div  class="panel panel-primary"><div class="panel-heading">' . $v['question'] . ' (Plusieurs réponses possibles)</div>');
+        } else {
+            echo('<div  class="panel panel-primary"><div class="panel-heading">' . $v['question'] . '</div>');
+        }
         foreach ($v['options'] as $q => $r) {
             $id = $v['id'] . '.' . $q;
-            echo('<div class="checkbox"><label for="' . $id . '"><input type="checkbox" id="' . $id . '"><span class="cr"><i class="cr-icon fa fa-check"></i></span>' . $r . '</label></div>');
+            echo('<div class="checkbox"><label for="' . $id . '"><input type="checkbox" name="' . $id . '" value="' . $id . '" id="' . $id . '"><span class="cr"><i class="cr-icon fa fa-check"></i></span>' . $r . '</label></div>');
             /*if (in_array($q, $v['answer'])) {
-                echo('<div class="checkbox"><label for="' . $id . '"><input type="checkbox" id="' . $id . '" checked><span class="cr"><i class="cr-icon fa fa-check"></i></span>
-            ' . $r . '</label></div>');
+                echo('<div class="checkbox"><label for="' . $id . '"><input checked type="checkbox" name="' . $id . '" value="' . $id . '" id="' . $id . '"><span class="cr"><i class="cr-icon fa fa-check"></i></span>' . $r . '</label></div>');
             } else {
-                echo('<div class="checkbox"><label for="' . $id . '"><input type="checkbox" id="' . $id . '"><span class="cr"><i class="cr-icon fa fa-check"></i></span>
-            ' . $r . '</label></div>');
+                echo('<div class="checkbox"><label for="' . $id . '"><input type="checkbox" name="' . $id . '" value="' . $id . '" id="' . $id . '"><span class="cr"><i class="cr-icon fa fa-check"></i></span>' . $r . '</label></div>');
+
             }*/
         }
         echo('</div>');
     }
     echo('</div>');
 }
-
-
 echo('</div></form>');
 echo(' <button id="val" class="btn btn-success btn-lg btn-block" style="display: block">Valider le questionnaire</button>');
-
-function shuffle_assoc(&$array)
-{
-    $keys = array_keys($array);
-
-    shuffle($keys);
-
-    foreach ($keys as $key) {
-        $new[$key] = $array[$key];
-    }
-
-    $array = $new;
-
-    return true;
-}
 
 ?>
 <!-- Message d'alerte si l'utilisateur essaye de valider alors qu'il n'a pas répondu à toutes les questions -->
@@ -143,6 +111,7 @@ function shuffle_assoc(&$array)
 
     </div>
 </div>
+<!-- Sinon, on demande s'il veut vraiment valider le questionnaire -->
 <div class="modal fade" id="validQuest" role="dialog">
     <div class="modal-dialog">
 
@@ -163,51 +132,7 @@ function shuffle_assoc(&$array)
 
     </div>
 </div>
-<script>
 
-    $(document).ready(function () {
-        var tabRep = [0, 0, 0, 0, 0];
-
-        $('#val').click(function (e) {
-            var nbQuest = 0;
-            for (var i = 1; i < 6; i++) {
-                nbQuest += parseInt($('.navbar-nav li:nth-child(' + i + ') b').text());
-            }
-            if (nbQuest == 32) {
-                $('#validQuest').modal('show');
-                $("#valider").click(function () {
-                    $("#formQuizz").submit();
-                });
-            }
-            else {
-                $('#warning').modal('show');
-            }
-
-
-        });
-
-        $(":checkbox").click(function () {
-            countAnswer($(this).parent().parent().parent().parent().attr('id'));
-        });
-
-        function countAnswer(domain) {
-            nb = domain.charAt(6);
-            tabRep[nb] = 0;
-            $.each($('#' + domain).find('.panel'), function () {
-                if ($(this).find(':checkbox:checked').length > 0) {
-                    tabRep[nb] += 1;
-                }
-            });
-            $('.navbar-nav li:nth-child(' + nb + ') b').text(tabRep[nb]);
-        }
-
-        //Fonction qui permet afficher seulement le domaine cliqué
-        $(".nav-tabs a").click(function () {
-            $(this).tab('show');
-            $('html, body').animate({scrollTop: 0});
-        });
-    });
-</script>
 <?php
 
 include_once("../View/footer.view.php");
