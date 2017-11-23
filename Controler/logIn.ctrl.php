@@ -45,6 +45,7 @@
             $_SESSION['nom'] = $infoProfesseur['Nom'];
             $_SESSION['prenom'] = $infoProfesseur['Prenom'];
             $_SESSION['mail'] = $email;
+            $_SESSION['role'] = "professeur";
         } else {
             //Wrong password or email
             $error = "Erreur: L'email ou mot de passe incorrect.";
