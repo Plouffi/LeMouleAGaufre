@@ -45,6 +45,5 @@
                         }
                     ?>
             </header>
-        </body>
-</html>
+
     <!-- Body and html balise are closed in footer.view.php file-->

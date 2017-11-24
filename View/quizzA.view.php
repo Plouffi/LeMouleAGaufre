@@ -18,7 +18,7 @@ session_start();
 
     <!--If you need to include some files (css, js), do it below-->
     <link rel="stylesheet" type="text/css" href="../Ressources/css/styleQuizz.css">
-    <script src="../Ressources/js/quizzScript.js"></script>
+    <script src="../Ressources/quizzScript.js"></script>
 
 </head>
 <body class="container">
@@ -100,7 +100,10 @@ echo('</div></form>');
         }
     });
 </script>
-<?php
 
-include_once("../View/footer.view.php");
-?>
+<footer>
+    <h1>Site GreenIT Version © 2017</h1>
+</footer>
+
+</body>
+</html>

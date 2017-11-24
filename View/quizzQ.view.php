@@ -2,25 +2,25 @@
 session_start();
 include('../Controler/quizzScript.ctrl.php');
 ?>
-    <!DOCTYPE html>
-    <html lang="fr">
-    <head>
-        <title>Quizz</title>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <!--Bootstrap-->
-        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
-        <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
-        <!--Script JQuery/Bootstrap-->
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <title>Quizz</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--Bootstrap-->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+    <!--Script JQuery/Bootstrap-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
-        <!--If you need to include some files (css, js), do it below-->
-        <link rel="stylesheet" type="text/css" href="../Ressources/css/styleQuizz.css">
-        <script src="../Ressources/js/quizzScript.js"></script>
+    <!--If you need to include some files (css, js), do it below-->
+    <link rel="stylesheet" type="text/css" href="../Ressources/css/styleQuizz.css">
+    <script src="../Ressources/js/quizzScript.js"></script>
 
-    </head>
+</head>
 <body class="container">
 <header><!--This is header will be the navigation menu bar-->
     <nav class="navbar navbar-inverse navbar-fixed-top">
@@ -133,7 +133,10 @@ echo(' <button id="val" class="btn btn-success btn-lg btn-block" style="display:
     </div>
 </div>
 
-<?php
 
-include_once("../View/footer.view.php");
-?>
+<footer>
+    <h1>Site GreenIT Version © 2017</h1>
+</footer>
+
+</body>
+</html>
