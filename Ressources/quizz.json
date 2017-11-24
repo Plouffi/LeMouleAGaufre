@@ -1,4 +1,11 @@
 {
+  "domainsNames": [
+    "Connaître les impacts des TIC et la législation associée",
+    "Maîtriser le cycle de vie et les leviers du numérique responsable",
+    "Identifier les enjeux spécifiques à chaque grand domaine du numérique",
+    "Connaître les solutions pour réduire les impacts de l’informatique",
+    "Connaître des méthodologies de travail pour la mise en place du numérique responsable"
+  ],
   "quizz": {
     "questions": [
       {
