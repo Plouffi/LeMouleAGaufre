@@ -18,7 +18,7 @@ session_start();
 
     <!--If you need to include some files (css, js), do it below-->
     <link rel="stylesheet" type="text/css" href="../Ressources/css/styleQuizz.css">
-    <script src="../Ressources/quizzScript.js"></script>
+    <script src="../Ressources/js/quizzScript.js"></script>
 
 </head>
 <body class="container">

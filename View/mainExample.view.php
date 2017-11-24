@@ -1,12 +1,12 @@
 <!--Example-->
 <?php
-    include("header.view.php");
+include("header.view.php");
 ?>
-        <section id="main">
-        </section>
+<section id="main">
+</section>
 
 
 <?php
-    include("footer.view.php");
+include("footer.view.php");
 ?>
 

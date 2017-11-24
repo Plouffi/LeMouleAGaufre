@@ -59,6 +59,7 @@
     //Depending on the data valeur, we include the corresponding view
     if (isset($error)) {
         $data['error'] = $error;
+        include ("../View/error.view.php");
     } else {
         //We redirect on the main view of the professor if the authentification succeed
         include ("../View/mainProfesseur.view.php");
