@@ -4,12 +4,12 @@ $(document).ready(function () {
         var nbQuest = 0;
         for (var i = 1; i < 6; i++) {
             nbQuest += parseInt($('.navbar-nav li:nth-child(' + i + ') b').text());
-        }/*
+        }
         $('#validQuest').modal('show');
         $("#valider").click(function () {
             $("#formQuizz").submit();
-        });*/
-        if (nbQuest == 32) {
+        });
+        /*if (nbQuest == 32) {
             $('#validQuest').modal('show');
             $("#valider").click(function () {
                 $("#formQuizz").submit();
@@ -17,7 +17,7 @@ $(document).ready(function () {
         }
         else {
             $('#warning').modal('show');
-        }
+        }*/
     });
 
     $(":checkbox").click(function () {

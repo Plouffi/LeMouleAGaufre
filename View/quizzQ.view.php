@@ -1,6 +1,6 @@
 <?php
 session_start();
-include('../Ressources/quizzScript.php');
+include('../Controler/quizzScript.ctrl.php');
 ?>
     <!DOCTYPE html>
     <html lang="fr">
@@ -17,8 +17,8 @@ include('../Ressources/quizzScript.php');
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
         <!--If you need to include some files (css, js), do it below-->
-        <link rel="stylesheet" type="text/css" href="../Ressources/styleQuizz.css">
-        <script src="../Ressources/quizzScript.js"></script>
+        <link rel="stylesheet" type="text/css" href="../Ressources/css/styleQuizz.css">
+        <script src="../Ressources/js/quizzScript.js"></script>
 
     </head>
 <body class="container">
@@ -66,7 +66,7 @@ foreach ($_SESSION['quizz']['domains'] as $key => $value) {
     } else {
         echo('<div class="tab-pane fade in" id="domain' . $domain . '">');
     }
-    echo('<h1>Domaine ' . $domain . '</h1>');
+    echo('<h1>' . $_SESSION['domainsNames'][$value[0]['domain'] - 1] . '</h1>');
     foreach ($value as $k => $v) {
         if (sizeof($v['answer']) > 1) {
             echo('<div  class="panel panel-primary"><div class="panel-heading">' . $v['question'] . ' (Plusieurs réponses possibles)</div>');
@@ -75,18 +75,18 @@ foreach ($_SESSION['quizz']['domains'] as $key => $value) {
         }
         foreach ($v['options'] as $q => $r) {
             $id = $v['id'] . '.' . $q;
-            echo('<div class="checkbox"><label for="' . $id . '"><input type="checkbox" name="' . $id . '" value="' . $id . '" id="' . $id . '"><span class="cr"><i class="cr-icon fa fa-check"></i></span>' . $r . '</label></div>');
-            /*if (in_array($q, $v['answer'])) {
+            //echo('<div class="checkbox"><label for="' . $id . '"><input type="checkbox" name="' . $id . '" value="' . $id . '" id="' . $id . '"><span class="cr"><i class="cr-icon fa fa-check"></i></span>' . $r . '</label></div>');
+            if (in_array($q, $v['answer'])) {
                 echo('<div class="checkbox"><label for="' . $id . '"><input checked type="checkbox" name="' . $id . '" value="' . $id . '" id="' . $id . '"><span class="cr"><i class="cr-icon fa fa-check"></i></span>' . $r . '</label></div>');
             } else {
                 echo('<div class="checkbox"><label for="' . $id . '"><input type="checkbox" name="' . $id . '" value="' . $id . '" id="' . $id . '"><span class="cr"><i class="cr-icon fa fa-check"></i></span>' . $r . '</label></div>');
-
-            }*/
+            }
         }
         echo('</div>');
     }
     echo('</div>');
 }
+echo('<input type="checkbox" name="sub" value="sub" checked style="display:none;">');
 echo('</div></form>');
 echo(' <button id="val" class="btn btn-success btn-lg btn-block" style="display: block">Valider le questionnaire</button>');
 

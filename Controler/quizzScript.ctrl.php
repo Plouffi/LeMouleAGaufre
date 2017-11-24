@@ -2,6 +2,7 @@
 // Récupération et réorganisation des questions
 $json = file_get_contents("../Ressources/quizz.json");
 $quizz = (json_decode($json, true));
+$domainsNames = $quizz['domainsNames'];
 $quizz = $quizz['quizz']['questions'];
 asort($quizz);
 
@@ -13,6 +14,8 @@ foreach ($quizz as $key => $value) {
 }
 //On stocke les questions du quizz dans une variable session
 $_SESSION['quizz'] = $tmp;
+$_SESSION['domainsNames'] = $domainsNames;
+$_SESSION['nbQuest'] = sizeof($quizz);
 
 for($i = 0; $i<sizeof($_SESSION['quizz']['domains']);$i++){
     shuffle($_SESSION['quizz']['domains'][$i]); // Mélange des questions

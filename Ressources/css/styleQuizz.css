@@ -110,7 +110,10 @@ body.container {
     margin-left: 5px;
     background-color: #3e936a;
 }
-.alert{
+body > .alert {
+
+}
+form .alert{
     margin: 5px 10px;
     padding: 0px;
 }
