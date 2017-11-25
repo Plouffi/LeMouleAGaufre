@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="../Ressources/css/style.css" rel="stylesheet" type="text/css"/>
-    <link rel="stylesheet" href="font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../Ressources/font-awesome-4.7.0/css/font-awesome.min.css">
 
 </head>
 
@@ -61,35 +61,30 @@ if (isset($_POST["send"])) {
 require 'header.view.php';
 ?>
 
-<body>
-<!-- DEBUT de la page -->
-
-<section id="main">
-    <section id="formulaire">
-
-        <section class="titre">
-            <h2>Identification</h2>
-        </section>
+    <div class="container">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h2>Identification</h2>
+            </div>
         <form method="post" action="login.view.php" id="formulaire">
-            <p>
-                <label for="id">
-                    <i class="fa fa-envelope" aria-hidden="true"></i>
-                </label>
-                <input id="remplir" type="texte" name="email" placeholder="Identifiant ou Email" value=""/>
-            </p>
-            <p>
-                <label for="MotDePasse">
-                    <i class="fa fa-lock" aria-hidden="true"></i>
-                </label>
-                <input id="remplir" type="password" placeholder="Mot de passe" name="MotDePasse" value=""/>
-            </p>
-            <p id="send">
+            <br>
+            <div class="input-group">
+              <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+              <input id="email" type="text" class="form-control" name="email" placeholder="Email">
+            </div>
+            <br>
+            <div class="input-group">
+              <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+              <input id="password" type="password" class="form-control" name="password" placeholder="Password">
+            </div>
+            <br>
+            <div class="block-center">
                 <input id="send" type="submit" value="Valider" name="send"/>
-            </p>
+            </div>
         </form>
         <a href="create_account.view.php">Créer un compte</a>
-    </section>
-</section>
+    </div>
+    </div>
 
 </body>
 <?php

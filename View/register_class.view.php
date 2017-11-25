@@ -1,24 +1,24 @@
-<section id="formulaire">
 
-                <section class="titre">
-                    <h2>Inscrire une classe</h2>
-                </section>
-                <form method="post" action="" id="formulaire">
-                    <p>
-                        <label for="Nom">
-                            <i class="fa  fa-user" aria-hidden="true"></i>
-                        </label>
-                        <input id="remplir" type="texte" name="Nom" value="" placeholder="Nom"  required/>
-                    </p>
-                    <p>
-                        <label for="mon_fichier">
-                            <i class="fa fa-graduation-cap" aria-hidden="true"></i>
-                        </label>
-                        <input type="hidden" name="MAX_FILE_SIZE" value="1048576" />
-                        <input type="file" name="mon_fichier" id="mon_fichier" />
-                    </p>
-                    <p id="send">
-                        <input id="send" type="submit" value="Envoyer" name="send" />
-                    </p>
-                </form>
-</section>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h2>Enregistrer une classe</h2>
+            </div>
+
+            <form method="post" action="create_account.view.php" id="formulaire">
+                <br>
+                <div class="input-group">
+                  <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                  <input id="remplir" type="texte" class="form-control" name="Nom" value="" placeholder="Nom"  required/>
+                </div>
+                <br>
+                <div class="input-group">
+                  <span class="input-group-addon"><i class="glyphicon glyphicon-file"></i></span>
+                  <input type="file"  class="form-control" name="mon_fichier" id="mon_fichier" />
+                </div>
+                <br>
+                <div class="block-center">
+                    <input id="send" type="submit" value="Valider" name="send"/>
+                </div>
+                <br>
+            </form>
+        </div>

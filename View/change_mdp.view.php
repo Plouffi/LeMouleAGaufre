@@ -42,32 +42,32 @@ if (isset($_SESSION['email'])) {
     }
 }
 ?>
-<section id="formulaire">
 
-    <section class="titre">
-        <h2>Changer mot de passe</h2>
-    </section>
-    <form method="post" action="" id="formulaire">
-        <p>
-            <label for="MotDePasse">
-                <i class="fa fa-lock" aria-hidden="true"></i>
-            </label>
-            <input id="remplir" type="password" name="MotDePasse" value="" placeholder="Mot de passe actuel" required/>
-        </p>
-        <p>
-            <label for="MotDePasse">
-                <i class="fa fa-lock" aria-hidden="true"></i>
-            </label>
-            <input id="remplir" type="password" name="MotDePasse" value="" placeholder="Nouveau mot de passe" required/>
-        </p>
-        <p>
-            <label for="MotDePasse">
-                <i class="fa fa-lock" aria-hidden="true"></i>
-            </label>
-            <input id="remplir" type="password" name="MotDePasse" value="" placeholder="Nouveau mot de passe" required/>
-        </p>
-        <p id="send">
-            <input id="send" type="submit" value="Envoyer" name="send"/>
-        </p>
-    </form>
-</section>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h2>Changer mot de passe</h2>
+            </div>
+
+            <form method="post" action="create_account.view.php" id="formulaire">
+                <br>
+                <div class="input-group">
+                  <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+                  <input id="password" type="password" class="form-control" name="password" placeholder="Mot de passe">
+                </div>
+                <br>
+                <div class="input-group">
+                  <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+                  <input id="password" type="password" class="form-control" name="password" placeholder="Nouveau mot de passe">
+                </div>
+                <br>
+                <div class="input-group">
+                  <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+                  <input id="password" type="password" class="form-control" name="password" placeholder="Nouveau mot de passe">
+                </div>
+                <br>
+                <div class="block-center">
+                    <input id="send" type="submit" value="Valider" name="send"/>
+                </div>
+                <br>
+            </form>
+        </div>

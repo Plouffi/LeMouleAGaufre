@@ -37,85 +37,48 @@ if (isset($_POST["send"])) {
 require('header.view.php');
 ?>
 
-<section id="main">
-    <section id="formulaire">
+    <div class="container">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h2>Creer compte</h2>
+            </div>
 
-        <section class="titre">
-            <h2>Creer compte</h2>
-        </section>
-        <form method="post" action="create_account.view.php" id="formulaire">
-            <p>
-                <label for="Email">
-                    <i class="fa fa-envelope" aria-hidden="true"></i>
-                </label>
-                <input id="remplir" type="mail" name="email" value="" placeholder="Email" required/>
-            </p>
-            <p>
-                <label for="MotDePasse">
-                    <i class="fa fa-lock" aria-hidden="true"></i>
-                </label>
-                <input id="remplir" type="password" name="MotDePasse" value="" placeholder="Mot de passe" required/>
-            </p>
-            <p>
-                <label for="Civilite">
-                    <i class="fa fa-venus-mars" aria-hidden="true"></i>
-                </label>
-                <select name="Civilite" id="civilite">
-                    <option value="Mr">Mr</option>
-                    <option value="Mme">Mme</option>
-                </select>
-            </p>
-            <p>
-                <label for="Nom">
-                    <i class="fa  fa-user" aria-hidden="true"></i>
-                </label>
-                <input id="remplir" type="texte" name="Nom" value="" placeholder="Nom" required/>
-            </p>
-            <p>
-                <label for="Prenom">
-                    <i class="fa  fa-user-plus" aria-hidden="true"></i>
-                </label>
-                <input id="remplir" type="texte" name="Prenom" value="" placeholder="Prénom" required/>
-            </p>
-            <p>
-                <label for="Adresse">
-                    <i class="fa fa-address-book" aria-hidden="true"></i>
-                </label>
-                <input id="remplir" type="texte" name="Adresse" value="" placeholder="Adresse" required/>
-            </p>
-            <p>
-                <label for="CodePostale">
-                    <i class="fa fa-address-book" aria-hidden="true"></i>
-                </label>
-                <input id="remplir" type="number" name="CodePostale" value="Code postale" placeholder="17000"
-                       required/>
-            </p>
-            <p>
-                <label for="Ville">
-                    <i class="fa fa-address-book" aria-hidden="true"></i>
-                </label>
-                <input id="remplir" type="texte" name="Ville" value="" placeholder="Ville" required/>
-            </p>
-            <p>
-                <label for="Pays">
-                    <i class="fa fa-address-book" aria-hidden="true"></i>
-                </label>
-                <input id="remplir" type="texte" name="Pays" id="Pays" value="" placeholder="Pays" required/>
-            </p>
-            <p>
-                <label for="Telephone">
-                    <i class="fa  fa-phone" aria-hidden="true"></i>
-                </label>
-                <input id="remplir" type="number" name="Telephone" value="" placeholder="0612345678" required/>
-            </p>
-            <p id="send">
-                <input id="send" type="submit" value="Envoyer" name="send"/>
-            </p>
-        </form>
-    </section>
-</section>
+            <form method="post" action="create_account.view.php" id="formulaire">
+                <br>
+                <div class="input-group">
+                  <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                  <input id="email" type="text" class="form-control" name="email" placeholder="Email">
+                </div>
+                <br>
+                <div class="input-group">
+                  <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+                  <input id="password" type="password" class="form-control" name="password" placeholder="Password">
+                </div>
+                <br>
+                <div class="input-group">
+                  <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                  <input id="remplir" type="texte" class="form-control" name="Nom" value="" placeholder="Nom" required/>
+                </div>
+                <br>
+                <div class="input-group">
+                  <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                  <input id="remplir" type="texte" class="form-control" name="Prenom" value="" placeholder="Prenom" required/>
+                </div>
+                <br>
+                <div class="input-group">
+                  <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
+                  <input id="remplir" type="texte" class="form-control" name="Ville" value="" placeholder="Ville" required/>
+                </div>
+                <br>
+                <div class="block-center">
+                    <input id="send" type="submit" value="Valider" name="send"/>
+                </div>
+                <br>
+            </form>
+        </div>
+</div>
 
-</body>
+
 <?php
 require('footer.view.php');
 ?>

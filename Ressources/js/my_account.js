@@ -6,12 +6,12 @@ $(function(){
 });
 
 function click(){
-    $("section#main section#account nav ul li ul").hide();
-    $("section#account nav ul li.up").click(function(){
+    $(".panel nav ul li ul").hide();
+    $(".panel nav ul li.up").click(function(){
         $('li.down').attr('class', 'up');
         $(this).attr('class', 'down');
-        $("section#account nav ul li.up ul").slideUp();
-        $('li.down').children("section#account nav ul").slideDown();
+        $(".panel nav ul li.up ul").slideUp();
+        $('li.down').children(".panel nav ul").slideDown();
     });
     
 }

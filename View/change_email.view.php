@@ -41,33 +41,32 @@ if (isset($_SESSION['email'])) {
         }
     }
 }
-?>
-<section id="formulaire">
+?>    
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h2>Changer email</h2>
+            </div>
 
-    <section class="titre">
-        <h2>Changer email</h2>
-    </section>
-    <form method="post" action="" id="formulaire">
-        <p>
-            <label for="Email">
-                <i class="fa fa-envelope" aria-hidden="true"></i>
-            </label>
-            <input id="remplir" type="mail" name="email" value="" placeholder="Email actuel" required/>
-        </p>
-        <p>
-            <label for="newEmail1">
-                <i class="fa fa-envelope" aria-hidden="true"></i>
-            </label>
-            <input id="remplir" type="mail" name="email" value="" placeholder="Nouveau Email" required/>
-        </p>
-        <p>
-            <label for="newEmail2">
-                <i class="fa fa-envelope" aria-hidden="true"></i>
-            </label>
-            <input id="remplir" type="mail" name="email" value="" placeholder="Nouveau Email" required/>
-        </p>
-        <p id="send">
-            <input id="send" type="submit" value="Envoyer" name="send"/>
-        </p>
-    </form>
-</section>
+            <form method="post" action="create_account.view.php" id="formulaire">
+                <br>
+                <div class="input-group">
+                  <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                  <input id="email" type="text" class="form-control" name="email" placeholder="Email">
+                </div>
+                <br>
+                <div class="input-group">
+                  <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                  <input id="email" type="text" class="form-control" name="email" placeholder="Nouveau Email">
+                </div>
+                <br>
+                <div class="input-group">
+                  <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                  <input id="email" type="text" class="form-control" name="email" placeholder="Nouveau Email">
+                </div>
+                <br>
+                <div class="block-center">
+                    <input id="send" type="submit" value="Valider" name="send"/>
+                </div>
+                <br>
+            </form>
+        </div>

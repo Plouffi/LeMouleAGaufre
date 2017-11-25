@@ -1,15 +1,14 @@
 <?php
 require 'header.view.php';
 ?>
-    <section id="main">
-        <section id="account">
+    <div class="container">
+        <div class="panel panel-default">
             <nav>
                 <ul>
                     <li class="up"><a href="#">Mon Compte</a>
                         <ul>
                             <li><a href="#" id="mdp">Changer Mot De Passe</a></li>
                             <li><a href="#" id="email">Changer Email</a></li>
-                            <li><a href="#">point</a></li>
                         </ul>
                     </li>
                     <li class="up"><a href="#">Classe</a>
@@ -20,14 +19,14 @@ require 'header.view.php';
                     </li>
                 </ul>
             </nav>
-        </section>
+        </div>
         <section id="view">
 
         </section>
-    </section>
+</div>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js" type="text/javascript"></script>
-    <script src="../View/js/my_account.js" type="text/javascript"></script>
+    <script src="../Ressources/js/my_account.js" type="text/javascript"></script>
 <?php
 require('footer.view.php');
 ?>
