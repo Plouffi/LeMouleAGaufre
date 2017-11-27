@@ -1,16 +1,16 @@
-.navbar-inverse{
+.navbar-inverse {
     background-color: #3e936a;
     border-radius: 0px;
     border: none;
 }
 
-.navbar-header a img{
+.navbar-header a img {
     height: 50px;
     width: 50px;
     margin-right: 45%;
 }
 
-footer .navbar-inverse{
+footer .navbar-inverse {
     background-color: #222;
     border-radius: 0px;
     border: none;
@@ -23,19 +23,19 @@ footer .navbar-inverse{
     border-color: #3e936a;
 }
 
-.h2, h2{
+.h2, h2 {
     font-size: 30px;
     text-align: center;
     margin-top: 0px;
     margin-bottom: 0px;
 }
 
-div .input-group{
+div .input-group {
     width: 80%;
     margin: auto;
 }
 
-input#send{
+input#send {
     background-color: #3e936a;
     color: white;
     padding: 12px 20px;
@@ -46,19 +46,23 @@ input#send{
     text-align: center;
 }
 
-
-.block-center{
+.block-center {
     margin: auto;
     width: 30%;
 }
 
-nav ul{
+nav ul {
     list-style-type: none;
 }
 
-.form-control{
+.form-control {
     height: auto;
 }
+
+h4 {
+    text-align: center;
+}
+
 
 
 

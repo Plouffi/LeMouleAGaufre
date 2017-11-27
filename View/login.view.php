@@ -1,14 +1,4 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Example</title>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="../Ressources/css/style.css" rel="stylesheet" type="text/css"/>
-    <link rel="stylesheet" href="../Ressources/font-awesome-4.7.0/css/font-awesome.min.css">
 
-</head>
 
 <?php
 
@@ -86,8 +76,6 @@ require 'header.view.php';
     </div>
     </div>
 
-</body>
 <?php
 require('footer.view.php');
 ?>
-</html>
