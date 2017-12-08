@@ -1,7 +1,5 @@
 <?php
 session_start();
-$_SESSION['nom'] = 'PELLETIER';
-$_SESSION['prenom'] = 'Grégory';
 ?>
 <!DOCTYPE html>
 <html lang="fr">

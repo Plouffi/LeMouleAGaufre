@@ -136,7 +136,7 @@ echo(' <button id="val" class="btn btn-success btn-lg btn-block" style="display:
 <script>
     $(document).ready(function () {
         time = 3600; //Time in second to do quizz
-        interv = window.setInterval(displayTime, 10);
+        interv = window.setInterval(displayTime, 1000);
         displayTime();
 
         function validQuizz() {
