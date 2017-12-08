@@ -14,7 +14,7 @@ class ProfesseurDAO{
     }
 
     function getPrenom($nom){
-        $query = "SELECT prenom FROM Professeur WHERE nom='$nom'";
+        $query = "SELECT Prenom FROM Professeur WHERE nom='$nom'";
         $statement = $this->db->query($query);
         if($statement){
             $result = $statement->fetchAll();
@@ -25,7 +25,7 @@ class ProfesseurDAO{
     }
 
     function getNom($prenom){
-        $query = "SELECT nom FROM Professeur WHERE prenom='$prenom'";
+        $query = "SELECT Nom FROM Professeur WHERE prenom='$prenom'";
         $statement = $this->db->query($query);
         if($statement){
             $result = $statement->fetchAll();
@@ -36,13 +36,35 @@ class ProfesseurDAO{
     }
 
     function getMail($id){
-        $query = "SELECT mail FROM Professeur WHERE id='$id'";
+        $query = "SELECT Mail FROM Professeur WHERE id='$id'";
         $statement = $this->db->query($query);
         if($statement){
             $result = $statement->fetchAll();
             return $result;
         } else {
             die('Error reading on getMail():'+$statement);
+        }
+    }
+
+    function getLogInInfo($mail){
+        $query = "SELECT MotDePasse, Mail FROM Professeur WHERE Mail='$mail'";
+        $statement = $this->db->query($query);
+        if($statement){
+            $result = $statement->fetchAll();
+            return $result;
+        } else {
+            die('Error reading on getLogInInfo():'+$statement);
+        }
+    }
+
+    function getInfoSessionProfesseur($mail){
+        $query = "SELECT * FROM Professeur WHERE Mail='$mail'";
+        $statement = $this->db->query($query);
+        if($statement){
+            $result = $statement->fetchAll();
+            return $result;
+        } else {
+            die('Error reading on getInfoSessionProfesseur():'+$statement);
         }
     }
 }
