@@ -14,8 +14,8 @@ class EleveDAO{
         }
     }
 
-    function getPrenom($nom){
-        $query = "SELECT prenom FROM Eleve WHERE nom='$nom'";
+    function getPrenom($id){
+        $query = "SELECT prenom FROM Eleve WHERE id='$id'";
         $statement = $this->db->query($query);
         if($statement){
             $result = $statement->fetchAll();
@@ -25,8 +25,8 @@ class EleveDAO{
         }
     }
 
-    function getNom($prenom){
-        $query = "SELECT nom FROM Eleve WHERE prenom='$prenom'";
+    function getNom($id){
+        $query = "SELECT nom FROM Eleve WHERE id='$id'";
         $statement = $this->db->query($query);
         if($statement){
             $result = $statement->fetchAll();

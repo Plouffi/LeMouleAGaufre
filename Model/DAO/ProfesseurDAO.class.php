@@ -13,8 +13,8 @@ class ProfesseurDAO{
         }
     }
 
-    function getPrenom($nom){
-        $query = "SELECT Prenom FROM Professeur WHERE nom='$nom'";
+    function getPrenom($id){
+        $query = "SELECT Prenom FROM Professeur WHERE id='$id'";
         $statement = $this->db->query($query);
         if($statement){
             $result = $statement->fetchAll();
@@ -24,8 +24,8 @@ class ProfesseurDAO{
         }
     }
 
-    function getNom($prenom){
-        $query = "SELECT Nom FROM Professeur WHERE prenom='$prenom'";
+    function getNom($id){
+        $query = "SELECT Nom FROM Professeur WHERE id='$id'";
         $statement = $this->db->query($query);
         if($statement){
             $result = $statement->fetchAll();
