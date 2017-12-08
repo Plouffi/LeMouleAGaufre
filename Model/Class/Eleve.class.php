@@ -3,16 +3,27 @@
 
 class Eleve{
 
+    private $id;
     private $nom;
     private $prenom;
-    private $id_classe;
-    private $mot_de_passe;
+    private $idClasse;
+    private $motDePasse;
+    private $essai;
 
-    function __construct($nom, $prenom,$id_classe,$mot_de_passe){
+    function __construct($id, $nom, $prenom,$idClasse,$motDePasse, $essai){
+        $this->id = $id;
         $this->nom = $nom;
         $this->prenom = $prenom;
-        $this->id_classe = $id_classe;
-        $this->mot_de_passe = $mot_de_passe;
+        $this->idClasse = $idClasse;
+        $this->motDePasse = $motDePasse;
+        $this->essai = $essai;
+    }
+
+    public function getId(){
+        return $this->id;
+    }
+    public function setId($nom){
+        $this->nom = $id;
     }
 
     public function getNom(){
@@ -29,18 +40,25 @@ class Eleve{
         $this->prenom = $prenom;
     }
 
-    public function getId_classe(){
-        return $this->id_classe;
+    public function getIdClasse(){
+        return $this->idClasse;
     }
-    public function setId_classe($id_classe){
-        $this->id_classe = $id_classe;
+    public function setIdClasse($idClasse){
+        $this->idClasse = $idClasse;
     }
 
-    public function getMot_de_passe(){
-        return $this->mot_de_passe;
+    public function getMotDePasse(){
+        return $this->motDePasse;
     }
-    public function setMot_de_passe($mot_de_passe){
-        $this->mot_de_passe = $mot_de_passe;
+    public function setMotDePasse($motDePasse){
+        $this->motDePasse = $motDePasse;
+    }
+
+    public function getEssai(){
+        return $this->essai;
+    }
+    public function setEssai($essai){
+        $this->essai = $essai;
     }
 
 }

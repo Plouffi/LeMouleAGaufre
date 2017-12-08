@@ -4,14 +4,16 @@
 class Classe{
 
     private $id;
-    private $id_prof;
-    private $id_etablissement;
+    private $idProf;
+    private $niveau;
+    private $nomClasse;
 
 
-    function __construct($id, $id_prof,$id_etablissement){
+    function __construct($id, $idProf, $niveau, $nomClasse){
         $this->id = $id;
-        $this->id_prof = $id_prof;
-        $this->id_etablissement = $id_etablissement;
+        $this->idProf = $idProf;
+        $this->niveau = $niveau;
+        $this->nomClasse = $nomClasse;
     }
 
     public function getId(){
@@ -21,19 +23,25 @@ class Classe{
         $this->id = $id;
     }
 
-    public function getId_prof(){
+    public function getIdProf(){
         return $this->id_prof;
     }
-    public function setId_prof($id_prof){
-        $this->id = $id_prof;
+    public function setIdProf($idProf){
+        $this->idProf = $idProf;
     }
 
-    public function getId_etablissement(){
-        return $this->id_etablissement;
+    public function getNiveau(){
+        return $this->niveau;
     }
-    public function setId_etablissement($id_etablissement){
-        $this->id = $id_etablissement;
+    public function setNiveau($niveau){
+        $this->niveau = $niveau;
     }
 
+    public function getNomClasse(){
+        return $this->nomClasse;
+    }
+    public function setNomClasse($nomClasse){
+        $this->nomClasse = $nomClasse;
+    }
 
 }

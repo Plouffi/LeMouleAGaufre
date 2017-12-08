@@ -7,14 +7,14 @@ class Professeur{
     private $nom;
     private $prenom;
     private $mail;
-    private $mot_de_passe;
+    private $motDePasse;
 
-    function __construct($id,$nom, $prenom, $mail, $mot_de_passe){
+    function __construct($id,$nom, $prenom, $mail, $motDePasse){
         $this->id = $id;
         $this->nom = $nom;
         $this->prenom = $prenom;
         $this->mail = $mail;
-        $this->mot_de_passe = $$mot_de_passe;
+        $this->motDePasse = $motDePasse;
     }
 
     public function getId(){
@@ -45,11 +45,11 @@ class Professeur{
         $this->nom = $mail;
     }
 
-    public function getmot_de_passe(){
-        return $this->mot_de_passe;
+    public function getMotDePasse(){
+        return $this->motDePasse;
     }
-    public function setmot_de_passe($mot_de_passe){
-        $this->mot_de_passe = $mot_de_passe;
+    public function setMotDePasse($motDePasse){
+        $this->motDePasse = $motDePasse;
     }
 
 }

@@ -10,13 +10,12 @@
 
     <!--If you need to include some files (css, js), do it below-->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <link href="../Ressources/css/style.css" rel="stylesheet" type="text/css"/>
     <link rel="stylesheet" href="../Ressources/font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../Ressources/css/styleMain.css">
 
 
 </head>
 <body>
-
 <header>
     <nav class="navbar navbar-inverse">
         <div class="container-fluid">
@@ -26,16 +25,40 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a href="mainExample.view.php"><img src="../Ressources/img/greenIt.jpg"></a>
+                <a href="#"><img src="../Ressources/img/logoGITpetit.png" class="img-responsive"></a>
             </div>
             <div class="collapse navbar-collapse" id="myNavbar">
                 <ul class="nav navbar-nav">
-                    <li class="active"><a href="#">Accueil</a></li>
-                    <li><a href="quizzQ.view.php">Quizz</a></li>
+                    <li><a href="#">Ressources</a></li>
+                    <?php
+                        if(!isset($_SESSION['Id'])) {
+                            session_start();
+                        }
+                        //Checking if an user is log in
+                        if(isset($_SESSION['Id'])){
+                            //Checking his role
+                            if($_SESSION['Role'] == "professeur"){
+                                //If the user is a teacher, we add a button to view his classes
+                                echo '<li><a href="../Controler/viewClasses.ctrl.php">Mes classes</a></li>';
+                            } else {
+                                //If the user is a student, we add a button to go to the quizz
+                                echo '<li><a href="../View/quizzQ.view.php">Quizz</a></li>';
+                            }
+                        }
+                    ?>
+
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="#"><span class="glyphicon glyphicon-user"></span> Nom Prénom</a></li>
-                    <li><a href="login.view.php"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+                    <li><a href="#"><span class="glyphicon glyphicon-user"></span> <?php if(isset($_SESSION['Id'])){ echo $_SESSION['Nom'].' '. $_SESSION['Prenom']; } else { echo "Nom Prénom"; }?></a></li>
+                    <?php
+                    //We change the login button state if a user is log in or not
+                    if(!isset($_SESSION['Id'])){
+                        echo '<li><a href="../View/login.view.php"><span class="glyphicon glyphicon-log-in"></span> Connexion</a></li>';
+                    } else {
+                        echo '<li><a href="../Controler/logout.ctrl.php"><span class="glyphicon glyphicon-log-out"></span> Déconnexion</a></li>';
+                    }
+                    ?>
+
                 </ul>
             </div>
         </div>
