@@ -33,7 +33,7 @@ include('../Controler/quizzScript.ctrl.php');
                 </button>
             </div>
             <div class="nav-tabs collapse navbar-collapse" id="myNavbar">
-                <ul class="nav navbar-nav">
+                <ul class="nav navbar-nav nav-dom">
                     <!-- Les labels indiquent le nombre de questions répondus par domaine-->
                     <?php
                     foreach ($_SESSION['quizz']['domains'] as $key => $value) {
@@ -48,7 +48,7 @@ include('../Controler/quizzScript.ctrl.php');
                     ?>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a><span class="glyphicon glyphicon-user"></span> Nom Prénom</a></li>
+                    <li><a class="time">Temps restant : <b class="min">60</b> min <b class="sec">0</b> sec</a></li>
                 </ul>
             </div>
         </div>
@@ -75,12 +75,12 @@ foreach ($_SESSION['quizz']['domains'] as $key => $value) {
         }
         foreach ($v['options'] as $q => $r) {
             $id = $v['id'] . '.' . $q;
-            //echo('<div class="checkbox"><label for="' . $id . '"><input type="checkbox" name="' . $id . '" value="' . $id . '" id="' . $id . '"><span class="cr"><i class="cr-icon fa fa-check"></i></span>' . $r . '</label></div>');
-            if (in_array($q, $v['answer'])) {
+            echo('<div class="checkbox"><label for="' . $id . '"><input type="checkbox" name="' . $id . '" value="' . $id . '" id="' . $id . '"><span class="cr"><i class="cr-icon fa fa-check"></i></span>' . $r . '</label></div>');
+            /*if (in_array($q, $v['answer'])) {
                 echo('<div class="checkbox"><label for="' . $id . '"><input checked type="checkbox" name="' . $id . '" value="' . $id . '" id="' . $id . '"><span class="cr"><i class="cr-icon fa fa-check"></i></span>' . $r . '</label></div>');
             } else {
                 echo('<div class="checkbox"><label for="' . $id . '"><input type="checkbox" name="' . $id . '" value="' . $id . '" id="' . $id . '"><span class="cr"><i class="cr-icon fa fa-check"></i></span>' . $r . '</label></div>');
-            }
+            }*/
         }
         echo('</div>');
     }
@@ -133,10 +133,37 @@ echo(' <button id="val" class="btn btn-success btn-lg btn-block" style="display:
     </div>
 </div>
 
+<script>
+    $(document).ready(function () {
+        time = 3600; //Time in second to do quizz
+        interv = window.setInterval(displayTime, 10);
+        displayTime();
+
+        function validQuizz() {
+            window.alert("Le temps est écoulé. Le questionnaire va être validé.");
+            $("#formQuizz").submit();
+        }
+
+        function displayTime() {
+
+            if (time == 0) {
+                window.clearInterval(interv);
+                validQuizz();
+            } else {
+                min = Math.floor(time / 60);
+                sec = time - min * 60;
+                $(".time b.min").text(min);
+                $(".time b.sec").text(sec);
+                time--;
+            }
+        }
+    });
+</script>
 
 <footer>
     <h1>Site GreenIT Version © 2017</h1>
 </footer>
+
 
 </body>
 </html>

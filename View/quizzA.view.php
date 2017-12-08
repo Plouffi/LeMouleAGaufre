@@ -34,7 +34,7 @@ session_start();
             </div>
             <div class="collapse navbar-collapse" id="myNavbar">
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a><span class="glyphicon glyphicon-user"></span> Nom Prénom</a></li>
+                    <?php echo('<li><a>'.$_SESSION['nom'].' '.$_SESSION['prenom'].'</a></li>'); ?>
                 </ul>
             </div>
         </div>
@@ -81,6 +81,7 @@ foreach ($_SESSION['quizz']['domains'] as $key => $value) {
     }
     $note += $noteDomain;
     $note = round($note * 2) / 2;
+    $_SESSION['note'] = $note;
     echo('</div>');
 }
 echo('</div></form>');

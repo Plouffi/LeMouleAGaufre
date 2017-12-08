@@ -3,13 +3,13 @@ $(document).ready(function () {
     $('#val').click(function (e) {
         var nbQuest = 0;
         for (var i = 1; i < 6; i++) {
-            nbQuest += parseInt($('.navbar-nav li:nth-child(' + i + ') b').text());
+            nbQuest += parseInt($('.nav-dom li:nth-child(' + i + ') b').text());
         }
-        $('#validQuest').modal('show');
+        /*$('#validQuest').modal('show');
         $("#valider").click(function () {
             $("#formQuizz").submit();
-        });
-        /*if (nbQuest == 32) {
+        });*/
+        if (nbQuest == 32) {
             $('#validQuest').modal('show');
             $("#valider").click(function () {
                 $("#formQuizz").submit();
@@ -17,7 +17,13 @@ $(document).ready(function () {
         }
         else {
             $('#warning').modal('show');
-        }*/
+        }
+    });
+    $('#begin').click(function (e) {
+        $('#beginQuizzModal').modal('show');
+        $("#valBeginQuizz").click(function () {
+            $("#beginQuizz").submit();
+        });
     });
 
     $(":checkbox").click(function () {
@@ -32,7 +38,7 @@ $(document).ready(function () {
                 tabRep[nb] += 1;
             }
         });
-        $('.navbar-nav li:nth-child(' + nb + ') b').text(tabRep[nb]);
+        $('.nav-dom li:nth-child(' + nb + ') b').text(tabRep[nb]);
     }
 
     //Fonction qui permet afficher seulement le domaine cliqué
