@@ -1,0 +1,48 @@
+img {
+    position: absolute;
+    z-index: 0;
+}
+
+div {
+
+    display: block;
+    height: 102px;
+    line-height: 102px;
+    width: 794px;
+    position: absolute;
+    z-index: 10;
+
+}
+
+p {
+    text-align: center;
+    font-size: 50px;
+    overflow: hidden;
+    display: block;
+    position: relative;
+    transform: rotate(90deg);
+
+}
+
+.note {
+    left: -135px;
+    top: 518px;
+}
+
+.personne {
+    left: 50px;
+    top: 518px;
+}
+
+@media print {
+    p {
+    }
+
+    .note {
+
+    }
+
+    .personne {
+
+    }
+}

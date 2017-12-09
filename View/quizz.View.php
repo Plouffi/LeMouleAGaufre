@@ -35,8 +35,8 @@ session_start();
                 <ul class="nav navbar-nav navbar-right">
                     <li><a href="../View/mainExample.view.php">Accueil</a></li>
                     <?php
-                    if(isset($_SESSION['nom']) && isset($_SESSION['prenom'])){
-                        echo('<li><a>'.$_SESSION['nom'].' '.$_SESSION['prenom'].'</a></li> ');
+                    if(isset($_SESSION['Id'])){
+                        echo('<li><a>'.$_SESSION['Nom'].' '.$_SESSION['Prenom'].'</a></li> ');
                     }
                     ?>
                 </ul>
@@ -48,7 +48,7 @@ session_start();
 <form id="beginQuizz" action="quizzQ.view.php" method="POST"></form>
 
     <?php
-        if(isset($_SESSION['nom'])&& isset($_SESSION['prenom'])){
+        if(isset($_SESSION['Id'])){
 
             echo('<div class="container"><h1>Cliquer sur le bouton ci-dessous pour commencer le quizz.</h1></div><button id="begin" class="btn btn-success btn-lg btn-block">Commencer le questionnaire</button>');
         }

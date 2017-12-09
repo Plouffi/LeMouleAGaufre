@@ -75,12 +75,12 @@ foreach ($_SESSION['quizz']['domains'] as $key => $value) {
         }
         foreach ($v['options'] as $q => $r) {
             $id = $v['id'] . '.' . $q;
-            echo('<div class="checkbox"><label for="' . $id . '"><input type="checkbox" name="' . $id . '" value="' . $id . '" id="' . $id . '"><span class="cr"><i class="cr-icon fa fa-check"></i></span>' . $r . '</label></div>');
-            /*if (in_array($q, $v['answer'])) {
+           // echo('<div class="checkbox"><label for="' . $id . '"><input type="checkbox" name="' . $id . '" value="' . $id . '" id="' . $id . '"><span class="cr"><i class="cr-icon fa fa-check"></i></span>' . $r . '</label></div>');
+            if (in_array($q, $v['answer'])) {
                 echo('<div class="checkbox"><label for="' . $id . '"><input checked type="checkbox" name="' . $id . '" value="' . $id . '" id="' . $id . '"><span class="cr"><i class="cr-icon fa fa-check"></i></span>' . $r . '</label></div>');
             } else {
                 echo('<div class="checkbox"><label for="' . $id . '"><input type="checkbox" name="' . $id . '" value="' . $id . '" id="' . $id . '"><span class="cr"><i class="cr-icon fa fa-check"></i></span>' . $r . '</label></div>');
-            }*/
+            }
         }
         echo('</div>');
     }

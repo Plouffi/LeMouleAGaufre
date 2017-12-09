@@ -1,6 +1,5 @@
 <?php
 session_start();
-//print_r($_POST);
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -34,7 +33,7 @@ session_start();
             </div>
             <div class="collapse navbar-collapse" id="myNavbar">
                 <ul class="nav navbar-nav navbar-right">
-                    <?php echo('<li><a>'.$_SESSION['nom'].' '.$_SESSION['prenom'].'</a></li>'); ?>
+                    <?php echo('<li><a>'.$_SESSION['Nom'].' '.$_SESSION['Prenom'].'</a></li>'); ?>
                 </ul>
             </div>
         </div>
@@ -94,7 +93,7 @@ echo('</div></form>');
 
         if (note / nbQ > 0.65) {
             $('#note').addClass('alert-success');
-            $('#note').append("Félicitation vous avez validé la certification avec une note de <b>" + note + "</b> sur " + nbQ + ".<br>Vous pouvez imprimer votre certification en cliquant sur <a>ce lien</a>.");
+            $('#note').append("Félicitation vous avez validé la certification avec une note de <b>" + note + "</b> sur " + nbQ + ".<br>Vous pouvez imprimer votre certification en cliquant sur <a href='certificat.view.php'>ce lien</a>.");
         } else {
             $('#note').addClass('alert-danger');
             $('#note').append("Vous avez une note de <b>" + note + "</b> sur " + nbQ + ".<br> Malheureusement, vous n'avez pas obtenu la certification.");
