@@ -3,6 +3,8 @@
     //Include required files below
     require_once ('../Model/Class/Professeur.class.php');
     require_once ('../Model/DAO/ProfesseurDAO.class.php');
+    require_once ('../Model/Class/Classe.class.php');
+    require_once ('../Model/DAO/ClasseDAO.class.php');
     //List of academic mail label
     $allSourceMail = array("univ-lr.fr");
     //Data config
@@ -51,6 +53,8 @@
             //Wrong password or email
             $error = "Erreur: L'email ou mot de passe incorrect.";
         }
+        $classes = new ClasseDAO($config["databasepath"]);
+        $classeProf = $classes->getAllClasseProf($_SESSION['Id']);
     }
 
     ////////////////////////////
@@ -63,6 +67,7 @@
         include ("../View/error.view.php");
     } else {
         //We redirect on the main view of the professor if the authentification succeed
+        $data['classes'] = $classeProf;
         include("../View/classeProfesseur.view.php");
     }
 ?>

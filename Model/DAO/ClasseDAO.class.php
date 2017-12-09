@@ -14,8 +14,8 @@ class ClasseDAO{
         }
     }
 
-    function insertClasse($IdClasse, $idProf, $niveau,$nomClasse){
-        $query = "INSERT INTO Classe VALUES ('$IdClasse', $idProf,'$niveau', '$nomClasse')";
+    function insertClasse($idClasse, $idProf, $niveau,$nomClasse){
+        $query = "INSERT INTO Classe VALUES ('$idClasse', $idProf,'$niveau', '$nomClasse')";
         $statement = $this->db->query($query);
         if ($statement) {
             $statement->fetchAll();
@@ -43,4 +43,15 @@ class ClasseDAO{
             die('Error reading on getAllClasseProf():'+$statement);
         }
     }
+    function getClasseFromId($idClasse){
+        $query = "SELECT * FROM Classe WHERE idClasse='$idClasse'";
+        $statement = $this->db->query($query);
+        if($statement){
+            $result = $statement->fetchAll();
+            return $result;
+        } else {
+            die('Error reading on getAllClasseProf():'+$statement);
+        }
+    }
+
 }

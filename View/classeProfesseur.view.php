@@ -13,7 +13,7 @@
                     echo '<div class="classeProf col-xs-12 col-md-4">'.
                             '<div class="panel panel-default">'.
                                 '<div class="panel-heading">'.
-                                    '<h3>'.$data['classes'][$i]['Nom'].'</h3>'.
+                                    '<h3><a href="../Controler/viewClass.ctrl.php?idClasse='.$data['classes'][$i]['IdClasse'].'">'.$data['classes'][$i]['Nom'].'</a></h3>'.
                                 '</div>'.
                                 '<div class="panel-primary">'.
                                     '<span class="input-group-addon"><i class="glyphicon glyphicon-star-empty"></i>Niveau </span>'.

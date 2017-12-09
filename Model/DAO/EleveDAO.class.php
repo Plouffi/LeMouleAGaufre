@@ -37,7 +37,7 @@ class EleveDAO{
     }
 
     function insertEleve($id, $nom, $prenom, $idClasse, $motDePasse, $essai){
-        $query = "INSERT INTO Eleve VALUES('$id', '$nom' , '$prenom' , '$idClasse', '$motDePasse', $essai, NULL)";
+        $query = "INSERT INTO Eleve VALUES('$id', '$nom' , '$prenom' , '$motDePasse',  '$idClasse', $essai, NULL)";
         $statement = $this->db->query($query);
         if($statement){
             $statement->fetchAll();
@@ -65,6 +65,17 @@ class EleveDAO{
             return $result;
         } else {
             die('Error reading on getInfoSessionEleve():'+$statement);
+        }
+    }
+
+    function getEleveFromIdClasse($idClasse){
+        $query = "SELECT * FROM Eleve WHERE IdClasse='$idClasse'";
+        $statement = $this->db->query($query);
+        if($statement){
+            $result = $statement->fetchAll();
+            return $result;
+        } else {
+            die('Error reading on getClasseFromIdClasse():'+$statement);
         }
     }
 }
