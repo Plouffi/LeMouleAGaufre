@@ -57,7 +57,7 @@ include('../Controler/quizzScript.ctrl.php');
 <?php
 
 /* Traitement des questions */
-echo('<form id="formQuizz" action="quizzA.view.php" target="_blank" method="POST"><div class="tab-content form-group">');
+echo('<form id="formQuizz" action="quizzA.view.php" method="POST"><div class="tab-content form-group">');
 //print_r(json_encode($_SESSION['quizz']));
 foreach ($_SESSION['quizz']['domains'] as $key => $value) {
     $domain = $value[0]['domain'];
@@ -75,12 +75,12 @@ foreach ($_SESSION['quizz']['domains'] as $key => $value) {
         }
         foreach ($v['options'] as $q => $r) {
             $id = $v['id'] . '.' . $q;
-           // echo('<div class="checkbox"><label for="' . $id . '"><input type="checkbox" name="' . $id . '" value="' . $id . '" id="' . $id . '"><span class="cr"><i class="cr-icon fa fa-check"></i></span>' . $r . '</label></div>');
-            if (in_array($q, $v['answer'])) {
+			echo('<div class="checkbox"><label for="' . $id . '"><input type="checkbox" name="' . $id . '" value="' . $id . '" id="' . $id . '"><span class="cr"><i class="cr-icon fa fa-check"></i></span>' . $r . '</label></div>');
+            /*if (in_array($q, $v['answer'])) {
                 echo('<div class="checkbox"><label for="' . $id . '"><input checked type="checkbox" name="' . $id . '" value="' . $id . '" id="' . $id . '"><span class="cr"><i class="cr-icon fa fa-check"></i></span>' . $r . '</label></div>');
             } else {
                 echo('<div class="checkbox"><label for="' . $id . '"><input type="checkbox" name="' . $id . '" value="' . $id . '" id="' . $id . '"><span class="cr"><i class="cr-icon fa fa-check"></i></span>' . $r . '</label></div>');
-            }
+            }*/
         }
         echo('</div>');
     }

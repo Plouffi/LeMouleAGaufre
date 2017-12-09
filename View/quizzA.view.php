@@ -93,7 +93,7 @@ echo('</div></form>');
 
         if (note / nbQ > 0.65) {
             $('#note').addClass('alert-success');
-            $('#note').append("Félicitation vous avez validé la certification avec une note de <b>" + note + "</b> sur " + nbQ + ".<br>Vous pouvez imprimer votre certification en cliquant sur <a href='certificat.view.php'>ce lien</a>.");
+            $('#note').append("Félicitation vous avez validé la certification avec une note de <b>" + note + "</b> sur " + nbQ + ".<br>Vous pouvez imprimer votre certification en cliquant sur <a href='certificat.view.php' target="_blank">ce lien</a>.");
         } else {
             $('#note').addClass('alert-danger');
             $('#note').append("Vous avez une note de <b>" + note + "</b> sur " + nbQ + ".<br> Malheureusement, vous n'avez pas obtenu la certification.");
