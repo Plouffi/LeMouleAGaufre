@@ -42,7 +42,7 @@
                                 echo '<li><a href="../Controler/viewClasses.ctrl.php">Mes classes</a></li>';
                             } else {
                                 //If the user is a student, we add a button to go to the quizz
-                                echo '<li><a href="../View/quizzQ.view.php">Quizz</a></li>';
+                                echo '<li><a href="../View/quizz.view.php">Quizz</a></li>';
                             }
                         }
                     ?>
