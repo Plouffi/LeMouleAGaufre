@@ -20,6 +20,5 @@
 ////////////////////////////
 //3rd step: Return the view
 ////////////////////////////
-
-    include("../View/login.view.php");
+	header('Location: '.$uri.'/View/login.view.php');
 ?>
